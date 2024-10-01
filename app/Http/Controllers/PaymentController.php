@@ -20,7 +20,7 @@ class PaymentController extends Controller
         // Récupérer tous les paramètres de la requête
         $allQueries = $request->query(); // ou $request->all()
 
-        $private_key = 'f15df968cc90b8dc117a3c041e403ee96659333c34a3978339'; // Clé privée obtenue de la plateforme AriaryNet
+        $private_key = 'c2feffa73e0933a6220ed9296bd7551c77a19d35ec23643016'; // Clé privée obtenue de la plateforme AriaryNet
 
         // Initialiser le décryptage TripleDES avec mode CBC et IV
         $des = new TripleDES();
@@ -177,7 +177,7 @@ class PaymentController extends Controller
         // Récupérer tous les paramètres de la requête
         $allQueries = $request->query(); // ou $request->all()
 
-        $private_key = 'f15df968cc90b8dc117a3c041e403ee96659333c34a3978339'; // Clé privée obtenue de la plateforme AriaryNet
+        $private_key = 'c2feffa73e0933a6220ed9296bd7551c77a19d35ec23643016'; // Clé privée obtenue de la plateforme AriaryNet
 
         // Initialiser le décryptage TripleDES avec mode CBC et IV
         $des = new TripleDES();
