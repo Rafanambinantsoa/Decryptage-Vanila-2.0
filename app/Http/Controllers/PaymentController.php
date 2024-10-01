@@ -20,7 +20,7 @@ class PaymentController extends Controller
         // Récupérer tous les paramètres de la requête
         $allQueries = $request->query(); // ou $request->all()
 
-        $private_key = '557c4156857a18e02269efdffa18f0d089c33ec950b0057438'; // Clé privée obtenue de la plateforme AriaryNet
+        $private_key = 'f15df968cc90b8dc117a3c041e403ee96659333c34a3978339'; // Clé privée obtenue de la plateforme AriaryNet
 
         // Initialiser le décryptage TripleDES avec mode CBC et IV
         $des = new TripleDES();
@@ -77,14 +77,14 @@ class PaymentController extends Controller
         $total = $request->total; // Montant à payer
         $nom = $request->nom; // Nom du payeur
         $mail = 'mail@mail.com'; // Adresse email du payeur
-        $site_url = 'https://porfolio-backend-api.onrender.com'; // URL du site e-commerce
+        $site_url = 'https://decryptage-vanila-2-0.onrender.com'; // URL du site e-commerce
         $ip = $request->ip(); // Adresse IP du client (Laravel peut détecter l'IP)
         $now = new DateTime(); // Date du paiement
         $daty = $now->format('Y-m-d'); // Formattage de date
 
         // Clés de sécurité
-        $public_key = '08fc5919d0b2644c50b5a073adbf0ce62aa69c67450759bc3b'; // Clé publique obtenue de la plateforme AriaryNet
-        $private_key = '557c4156857a18e02269efdffa18f0d089c33ec950b0057438'; // Clé privée obtenue de la plateforme AriaryNet
+        $public_key = '4c36cff9f00736b959c123ffcabf853aeae44d956b66f35f43'; // Clé publique obtenue de la plateforme AriaryNet
+        $private_key = 'c2feffa73e0933a6220ed9296bd7551c77a19d35ec23643016'; // Clé privée obtenue de la plateforme AriaryNet
 
         // Authentification pour obtenir le token
         $auth_params = [
@@ -154,6 +154,8 @@ class PaymentController extends Controller
         curl_setopt($curl, CURLOPT_URL, $url);
         $result = curl_exec($curl);
 
+        // dd($result);
+
         if ($result === false) {
             dd('Erreur cURL : ' . curl_error($curl));
         }
@@ -163,6 +165,7 @@ class PaymentController extends Controller
 
         // Décryptage de l'ID de paiement (vérifiez d'abord si $result est correct)
         $des->setKey($private_key);
+
         $id = $des->decrypt($result);
         // dd($id);
         return redirect()->away("https://moncompte.ariarynet.com/payer/{$id}");
@@ -174,7 +177,7 @@ class PaymentController extends Controller
         // Récupérer tous les paramètres de la requête
         $allQueries = $request->query(); // ou $request->all()
 
-        $private_key = '557c4156857a18e02269efdffa18f0d089c33ec950b0057438'; // Clé privée obtenue de la plateforme AriaryNet
+        $private_key = 'f15df968cc90b8dc117a3c041e403ee96659333c34a3978339'; // Clé privée obtenue de la plateforme AriaryNet
 
         // Initialiser le décryptage TripleDES avec mode CBC et IV
         $des = new TripleDES();
