@@ -24,4 +24,8 @@ Route::post('/pay',[PaymentController::class , 'initPayment']);
 Route::get('/success',[PaymentController::class , 'success']);
 Route::get('/echec',[PaymentController::class , 'failed']);
 Route::get('/retour',[PaymentController::class , 'failed']);
+//un lien pour retourner une simple reponse json avec un statut 200
+Route::get('/withdraw', function () {
+    return response()->json(['status' => 'Votre retrait a bien été établi avec succes'], 200);
+});
 
